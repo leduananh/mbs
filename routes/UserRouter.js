@@ -1,7 +1,7 @@
 'use strict';
 
-const express = require('express');
-const UserController = require('../controller/UserController');
+import express from 'express';
+import UserController from '../controller/UserController.js';
 
 const UserRouter = express.Router();
 const controller = UserController();
@@ -9,7 +9,4 @@ const controller = UserController();
 UserRouter.post('/user', controller.addUser);
 
 UserRouter.get('/getAllUser', controller.getAllUser);
-
-module.exports = {
-  routes: UserRouter,
-};
+export default UserRouter;

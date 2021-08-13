@@ -1,15 +1,16 @@
 'use strict';
 
-const firebaseApp = require('../db');
-const User = require('../models/User');
+import firebaseApp from '../db.js';
+import User from '../models/User.js';
+import userHandler from '../models/modelsHandler/UserHandler.js';
 
 const firestore = firebaseApp.firestore();
 
 class UserControllerClass {
   async addUser(req, res, next) {
     try {
-      const data = req.body;
-      await firestore.collection('users').doc().set(data);
+      let user = await userHandler(req.body);
+      await firestore.collection('users').doc().set(user);
       res.status(200).send('save ok');
     } catch (error) {
       res.status(400).send(error.message);
@@ -29,4 +30,4 @@ class UserControllerClass {
 }
 const UserController = () => new UserControllerClass();
 
-module.exports = UserController
+export default UserController;

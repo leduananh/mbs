@@ -1,5 +1,5 @@
-const firebase = require('firebase');
-const config = require('./config');
+import firebase from 'firebase';
+import config from './config.js';
 const firebaseApp = firebase.initializeApp(config.firebaseConfig);
 
-module.exports = firebaseApp;
+export default firebaseApp;
