@@ -1,0 +1,29 @@
+/* padding */
+.pd-3 {
+  padding: 3px 3px 3px 3px;
+}
+
+.pd-6 {
+  padding: 6px 6px 6px 6px;
+}
+
+.pd-10 {
+  padding: 10px 10px 10px 10px;
+}
+
+.pd-20 {
+  padding: 20px 20px 20px 20px;
+}
+
+/* border */
+.bd-thin {
+  border: 1px solid black;
+}
+
+.bd-none {
+  border: none;
+}
+
+.bd-rd-thin {
+  border-radius: 4px;
+}
