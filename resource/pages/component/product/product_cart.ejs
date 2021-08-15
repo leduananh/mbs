@@ -1,0 +1,25 @@
+<div class="product-cart flex-col pd-20 bd bd-color-gray-light bd-rd">
+      
+    <h2 class='text-align-center min-h-80p min-w-310p '><%=product.name%></h2>
+  
+    <img class="w-100 mg-tb-20 min-h-310p min-w-310p" src="<%=product.url%>" alt="product.name" />
+
+    <p class="text-align-justify min-h-200p max-h-250p"><%=product.description%></p>
+
+    <div class='flex-col justify-content-space-around w-100 mg-tb-10 h-100p'>
+      <span><%=product.price.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})%></span>
+      <span><%=product.stock%> units in stock </span>
+    </div>
+
+    <div class='w-100 mg-tb-10 '>
+      <button class="cl-dodgerblue-light pd-10 bd-none bd-rd cursor-pointer">
+        <i class="icon-lib fas fa-info-circle"></i>
+        Details
+        </button>
+      <button class="cl-coral-light pd-10 bd-none bd-rd cursor-pointer">
+        <i class="icon-lib fas fa-shopping-cart "></i>
+        Oder Now
+        </button>
+    </div>
+    
+  </div>

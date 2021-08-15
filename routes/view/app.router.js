@@ -8,3 +8,4 @@ export const AppRouter = express.Router();
 AppRouter.get('/', toIndex);
 
 AppRouter.get('/index', getindex);
+

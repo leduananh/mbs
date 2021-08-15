@@ -1,0 +1,71 @@
+/* padding */
+.pd-3 {
+  padding: 3px 3px 3px 3px;
+}
+
+.pd-6 {
+  padding: 6px 6px 6px 6px;
+}
+
+.pd-10 {
+  padding: 10px 10px 10px 10px;
+}
+
+.pd-15 {
+  padding: 15px 15px 15px 15px;
+}
+
+.pd-20 {
+  padding: 20px 20px 20px 20px;
+}
+
+/* margin */
+.mg-tb-10 {
+  margin: 10px 0 10px 0;
+}
+
+.mg-tb-20 {
+  margin: 20px 0 20px 0;
+}
+
+.mg-tb-30 {
+  margin: 30px 0 30px 0;
+}
+
+.mg-lr-10 {
+  margin: 0 10px 0 10px;
+}
+
+/* border */
+.bd {
+  border: 1px solid black;
+}
+
+.bd-none {
+  border: none;
+}
+
+.bd-thin {
+  border: 1px solid black;
+}
+
+.bd-color-gray {
+  border-color: gray !important;
+}
+
+.bd-color-gray-light {
+  border-color: rgb(196, 196, 196) !important;
+}
+
+.bd-rd {
+  border-radius: 4px;
+}
+
+.bd-rd-thin {
+  border-radius: 4px;
+}
+
+/* cursor */
+.cursor-pointer{
+  cursor: pointer;
+}

@@ -1,6 +1,6 @@
 import { v5, validate } from 'uuid';
 
-export class UuidV5 {
+export class IdGenerator {
   #generator;
   #validator;
   #NAMESPACE;

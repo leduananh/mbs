@@ -1,10 +1,11 @@
-@import url("/static/css/duan-trap/common.css");
-@import url("/static/css/duan-trap/flex.css");
-@import url("/static/css/duan-trap/measure.css");
-@import url("/static/css/duan-trap/icon.css");
-@import url("/static/css/duan-trap/background.css");
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+
+.product-cart {
+  width: 350px;
+  min-height: 400px;
+}
+

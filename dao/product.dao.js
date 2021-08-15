@@ -1,28 +1,28 @@
 import { Errors } from '../models/error/error.dao.model.js';
 import { firebaseApp } from '../db.js';
-import { UuidV5 } from '../Utilities/uuid/uuid.utilities.js';
-
+import { IdGenerator } from '../Utilities/uuid/uuid.utilities.js';
+import {Product} from '../models/Product.model.js'
 export class ProductDao {
   #collection_name;
   #album_name;
   #repository;
   #storage;
-  #uuid;
+  #idGenerator;
   constructor() {
     this.#collection_name = 'products';
     this.#album_name = 'products/';
     this.#repository = firebaseApp.firestore();
     this.#storage = firebaseApp.storage();
-    this.#uuid = new UuidV5();
+    this.#idGenerator = new IdGenerator();
   }
 
    addProduct(product) {
     return new Promise(async (resolve, reject) => {
       try {
-        let id = this.#uuid.generate(product.name);
-        product.id = id;
-        
-        await this.#repository.collection(this.#collection_name).doc(id).set(product);
+        let id = this.#idGenerator.generate(product.name);
+        product.id = id;        
+
+        await this.#repository.collection(this.#collection_name).doc(id).set(Product(product));
 
         resolve(new Errors(false, true, ''));
 
@@ -41,86 +41,72 @@ export class ProductDao {
         if (data.empty) reject(new Errors(true, null,'this'+ this.#collection_name +'collection is empty!!!'));
 
         let products = data.docs.map((doc) => doc.data());
-        let errorList = []
-        let albums = await this.getAlbums().catch(error=>{
-          errorList.push(error)
-        });
+     
+        let albums = await this.getAlbums()
         
-        let productsWithImage = await this.mergeProductWithUrl(products,albums).catch(error=>{
-          errorList.push(error)
-        
-        });
+        if(albums.isError()) {
+          reject(albums);
+          return;
+        }
+         
+        let productsWithImage = await this.mergeProductWithUrl(products,albums.getData())
 
-        resolve(new Errors(false, productsWithImage, ''));
+        if(productsWithImage.isError()){
+          reject(productsWithImage);
+          return;
+        }
+        
+        resolve(new Errors(false, productsWithImage.getData(), ''));
       } catch (error) {
         reject(new Errors(true, data, error.message));
       }
     });
   }
 
-   getAlbums(){
-    return new Promise(async (resolve, reject) => {
+  async getAlbums(){
       try {
-        let data = await this.#repository.ref(this.#album_name);
-        if (data === null || data === undefined)
-          reject(new Errors(true, null, 'this '+ this.#album_name +' albums is empty!!!'));
+        let albums = await this.#storage.ref(this.#album_name);
+        if (albums === null || albums === undefined)
+          return new Errors(true, null, 'this '+ this.#album_name +' albums is empty!!!')
        
-        resolve(new Errors(false, data, ''));
+        return new Errors(false, albums, '')
 
       } catch (error) {
-        reject(new Errors(true, null, error.message));
+        return new Errors(true, null, error.message);
       }
-    });
   }
 
-   getProductDownloadUrl(albums, imagePath) {
-    return new Promise(async (resolve, reject) => {
+  async getProductDownloadUrl(albums, imagePath) {
       try {
-        let imageRef = await data.child(imagePath);
-        if(imageRef === null) reject(new Errors(true, null, 'dont have '+ imagePath +' in albums!!!'));
-        
+        let imageRef = await albums.child(imagePath);
+              
         let downloadUrl = await imageRef.getDownloadURL();
 
-        resolve(new Errors(false, downloadUrl, ''));
+        return new Errors(false, downloadUrl, '');
 
       } catch (error) {
-        reject(new Errors(true, null, error.message));
+        return new Errors(true, null, error.message);
       }
-    });
   }
 
-   mergeProductWithUrl(products, albums) {
-    return new Promise(async (resolve, reject) => {
+  async mergeProductWithUrl(products, albums) {
       try {
         for(let i = 0; i < products.length; i++){
           let product = products[i];
 
-          let path = product.imgPath
+          let path = product.path
 
-          let downloadUrl = this.getProductDownloadUrl(albums,path);
+          let downloadUrl = await this.getProductDownloadUrl(albums,path);
 
-          product['url'] = downloadUrl;
+          if(downloadUrl.isError()) product['url'] = null;
+
+          product['url'] = downloadUrl.getData();
         }
 
-        resolve(new Errors(false, products, ''))
-        
+        return new Errors(false, products, '')
+    
       } catch (error) {
-        reject(new Errors(true, null, error.message));
+        return new Errors(true, null, error.message)
       }
-    });
   }
 }
-
-
-// async #getAlbums() {
-//   return new Promise(async (resolve, reject) => {
-//     try {
-//       let data = await this.#repository.ref(this.#album_name);
-//       if (data === null || data === undefined)
-//         reject(new Errors(true, null, 'this '+ this.#album_name +' albums is empty!!!'));
-//       resolve(new Errors(false, data, ''));
-//     } catch (error) {
-//       reject(new Errors(true, null, error.message));
-//     }
-//   });
-// }
