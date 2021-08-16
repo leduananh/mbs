@@ -9,11 +9,28 @@
     <%- include('./component/header/cart_detail_header.ejs'); %>
     <!-- header -->
 
-    <div class='vw-60 mg-auto flex-row justify-content-center'>
-    <!-- table -->
+    <div class='vw-60 mg-auto flex-col justify-content-center'>
+        <button
+        class='w-150p pd-10 bg-crimson-light cl bd-none bd-rd-thin cursor-pointer mg-tb-10' 
+        onclick="cart.clearCart()"
+        >
+        <i class="fas fa-times-circle cl"></i>
+        clear chart
+        </button>
+
+        <!-- table -->
         <%- include('./component/cart/cart_detail.ejs',{cartItem: Array.from(cart.values())}); %>
-    <!-- table -->
-    </div>
+         <!-- table -->
     
+        <button
+        class='w-200p pd-10 bg-chartreuse-light cl bd-none bd-rd-thin cursor-pointer' 
+        onclick="(_=>window.location.href=window.location.origin)()"
+        >
+        <i class="fas fa-arrow-circle-left cl"></i>
+        continue shopping
+        </button>
+
+    </div>
+
   </body>
 </html>

@@ -59,6 +59,36 @@ export class CartService {
     }
   }
 
+  async removeCartItem(docRef,productId){
+    try {
+      const data = await this.getCart(docRef);
+
+      if (data.isError()) return null
+
+      const cart = data.getData();
+
+      cart.delete(productId)
+
+      const error = await this.#dao.updateCart(docRef,cart)
+
+      if(error.isError()) return null;
+
+      return this.#dao.cartStringify(cart);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  async clearCart(docRef){
+    try {
+      const data = await this.#dao.clearCart(docRef)
+      if(data.isError()) return false;
+      return true
+    } catch (error) {
+      return false;
+    }
+  }
+
   getCartAmount(cart) {
     return Array.from(cart.values())
       .map((incart) => incart.amount)

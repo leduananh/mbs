@@ -25,7 +25,15 @@ var utilities = {
         .fail(reject)
     );
   },
+  
   updateView(selector, content) {
     $(selector).html(content);
+  },
+
+  vndFormat(number) {
+    return number.toLocaleString('vi-VN', {
+      style: 'currency',
+      currency: 'VND',
+    });
   },
 };

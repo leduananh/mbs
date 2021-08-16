@@ -57,6 +57,20 @@ export class CartDao {
     });
   }
 
+  clearCart(docRef){
+    return new Promise(async (resolve, reject) => {
+      try {
+        const cartRef = await this.#repository.collection(this.#collection_name).doc(docRef);
+  
+        await cartRef.delete();
+ 
+        resolve(new Errors(false, true, ''));
+      } catch (error) {
+        reject(new Errors(true, null, error.message));
+      }
+    });
+  }
+
   cartStringify(cart) {
     return JSON.stringify(Array.from(cart.entries()));
   }

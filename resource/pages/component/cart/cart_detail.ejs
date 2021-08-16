@@ -42,7 +42,7 @@
       </tr>
     </thead>
 
-    <tbody class="text-align-center">
+    <tbody id='tableBody' class="text-align-center">
 
     <% cartItem.forEach(item=>{ %>
               <tr>
@@ -66,19 +66,21 @@
                 }) %></td>
                 <td>
                  
-                <button>
+                <button 
+                    onclick="cart.removeCartItem(event,'<%= item.product.id%>')"
+                >
                     <i class="fas fa-times"></i>
                     remove
                 </button>
                 </td>
               </tr>      
     <%})%>
-    <tr>
+    <tr id='keep'>
         <td class="max-w-80p"></td>
         <td></td>
         <td></td>
-        <td>grand total</td>
-        <td><%= cartItem.map(item=>item.amount * item.product.price).reduce((count,cur)=>count+cur).toLocaleString('vi-VN', {
+        <td class="bold" >Grand total</td>
+        <td id='grandTotal'><%= cartItem.map(item=>item.amount * item.product.price).reduce((count,cur)=>count+cur).toLocaleString('vi-VN', {
             style: 'currency',
             currency: 'VND'
         }) %> </td>
