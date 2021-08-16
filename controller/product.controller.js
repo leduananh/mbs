@@ -22,12 +22,22 @@ export const getAlbums = async (req, res, next) => {
 
 export const addProduct = async (req, res, next) => {
   try {
-    let data = await service.addProduct(req.body);
+    const newProduct = req.body;
 
-    if (data.isError()) {
-      defaultErrorHandler(res, data.getMsg());
-      return;
-    }
+    const uploadFileName = req.files.path.name;
+
+    const file = req.files.path.data;
+
+    let productUrl = await service.uploadImage(uploadFileName, file);
+    if (productUrl === null || productUrl === undefined)
+      return defaultErrorHandler(res, 'cant process upload image');
+
+    newProduct.url = productUrl;
+    newProduct.path = uploadFileName;
+
+    let data = await service.addProduct(newProduct);
+
+    if (data.isError()) return defaultErrorHandler(res, data.getMsg());
 
     res.status(HTTP_STATUS.SUCCESSFUL_RESPONSES.OK.CODE).send(data.getData());
   } catch (error) {

@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.flex-warp {
+  flex-wrap: wrap;
+}
+
 /* justify item */
 .justify-content-center {
   justify-content: center;

@@ -10,10 +10,12 @@
     <%- include('./component/header/header.ejs', {amount: amount}); %>
     <!-- header -->
     
-    <!-- products section -->
-    <%- include('./component/product/products_section.ejs', {products: products}); %>
-     <!-- products section -->
+     <!-- form -->
+     <%- include('./component/product/product_create_form.ejs'); %>
+     <!-- form -->
 
-    </div>
+    <P id='state' hidden>state</P>
+
+  <script defer src="/static/js/pageJs/productUpload.js"></script>
   </body>
 </html>

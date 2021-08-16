@@ -1,7 +1,6 @@
 import { firebaseApp } from '../db.js';
 import { User } from '../models/User.model.js';
 import { Errors } from '../models/error/error.dao.model.js';
-
 export class UserDao {
   #collection_name;
   #repository;

@@ -1,4 +1,4 @@
-<div class="product-cart flex-col pd-20 bd bd-color-gray-light bd-rd">
+<div data-product-id="<%=product.id%>" data-product-name="<%=product.name%>" class="product-card flex-col pd-20 bd bd-color-gray-light bd-rd mg-tb-10">
       
     <h2 class='text-align-center min-h-80p min-w-310p '><%=product.name%></h2>
   
@@ -12,11 +12,13 @@
     </div>
 
     <div class='w-100 mg-tb-10 '>
-      <button class="cl-dodgerblue-light pd-10 bd-none bd-rd cursor-pointer">
-        <i class="icon-lib fas fa-info-circle"></i>
-        Details
+      <a onclick=" function a(){debugger;window.location.href = window.location.origin + '/detail?id=<%=product.id%>'}; a()">
+        <button class="bg-dodgerblue-light pd-10 bd-none bd-rd cursor-pointer">
+          <i class="icon-lib fas fa-info-circle"></i>
+          Details
         </button>
-      <button class="cl-coral-light pd-10 bd-none bd-rd cursor-pointer">
+      </a>
+      <button class="bg-coral-light pd-10 bd-none bd-rd cursor-pointer" onclick="cart.addToCart(event)">
         <i class="icon-lib fas fa-shopping-cart "></i>
         Oder Now
         </button>

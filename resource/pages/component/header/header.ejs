@@ -12,19 +12,58 @@
     <h1>Products</h1>
     <p>All the asdasdadasd adasadasd</p>
   </div>
-  <button
-    class="
-      flex-row
-      mg-lr-10
-      align-items-center
-      pd-6
-      bd-rd-thin
-      cl
-      bd-thin
-      cursor-pointer
-    "
-  >
-    <i class="icon-lib fas fa-shopping-cart"></i>
-    <p>view cart</p>
-  </button>
+
+  <div class="flex-row">
+    <button
+      class="
+        flex-row
+        mg-lr-10
+        align-items-center
+        pd-6
+        bd-rd-thin
+        bg
+        bd-thin
+        cursor-pointer
+        pos-relative
+        mg-r-30p
+      "
+    >
+      <div
+        class="
+          flex-row
+          justify-content-center
+          align-items-center
+          bd-rd-circle
+          w-30p
+          h-30p
+          bg-crimson-light
+          pos-absolute
+        "
+        style="top: -20px; right: -20px"
+      >
+        <span id="cart-amount" class="cl"><%=amount%></span>
+      </div>
+
+      <i class="icon-lib fas fa-shopping-cart"></i>
+      <p>view cart</p>
+    </button>
+
+    <button
+      class="
+        flex-row
+        mg-lr-10
+        align-items-center
+        pd-6
+        bd-rd-thin
+        bg
+        bd-thin
+        cursor-pointer
+        pos-relative
+        mg-r-30p
+      "
+    >
+      <i class="icon-lib fas fa-plus-circle"></i>
+      <p>add product</p>
+    </button>
+  </div>
 </header>

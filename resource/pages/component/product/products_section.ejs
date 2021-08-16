@@ -1,4 +1,4 @@
-<div class="flex-row justify-content-space-around mg-tb-20">
-  <% products.forEach(product => {%> <%- include('./product_cart.ejs', {product:
+<div class="flex-row  flex-warp justify-content-space-around vw-60 mg-auto mg-tb-20 ">
+  <% products.forEach(product => {%> <%- include('./product_card.ejs', {product:
   product}); %> <% }); %>
 </div>

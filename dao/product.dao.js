@@ -22,7 +22,7 @@ export class ProductDao {
         let id = this.#idGenerator.generate(product.name);
         product.id = id;        
 
-        await this.#repository.collection(this.#collection_name).doc(id).set(Product(product));
+        await this.#repository.collection(this.#collection_name).doc(id).set(product);
 
         resolve(new Errors(false, true, ''));
 
@@ -57,6 +57,30 @@ export class ProductDao {
         }
         
         resolve(new Errors(false, productsWithImage.getData(), ''));
+      } catch (error) {
+        reject(new Errors(true, data, error.message));
+      }
+    });
+  }
+
+  getProductByName(productName){
+    return new Promise(async (resolve, reject) => {
+      try {
+        let id =  this.#idGenerator.isValidIdV5(productName) ? productName : this.#idGenerator.generate(productName);
+       
+        const productRef = await this.#repository
+          .collection(this.#collection_name)
+          .doc(id);
+
+        const doc = await productRef.get();
+
+        if (!doc.exists) {
+          resolve(new Errors(true, null, 'dont have this product'));
+          return
+        } 
+        
+        resolve(new Errors(false, doc.data(), ''));
+
       } catch (error) {
         reject(new Errors(true, data, error.message));
       }

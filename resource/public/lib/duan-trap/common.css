@@ -20,6 +20,14 @@
 }
 
 /* margin */
+.mg-auto {
+  margin: auto !important;
+}
+
+.mg-r-30p {
+  margin-right: 30px !important;
+}
+
 .mg-tb-10 {
   margin: 10px 0 10px 0;
 }
@@ -36,6 +44,17 @@
   margin: 0 10px 0 10px;
 }
 
+.mr-l-10p {
+  margin-left: 10px;
+}
+
+.mr-l-15p {
+  margin-left: 15px;
+}
+
+.mr-l-20p {
+  margin-left: 20px;
+}
 /* border */
 .bd {
   border: 1px solid black;
@@ -43,6 +62,10 @@
 
 .bd-none {
   border: none;
+}
+
+.bd-top-thin {
+  border-top: 1px solid black;
 }
 
 .bd-thin {
@@ -61,11 +84,15 @@
   border-radius: 4px;
 }
 
+.bd-rd-circle {
+  border-radius: 100%;
+}
+
 .bd-rd-thin {
   border-radius: 4px;
 }
 
 /* cursor */
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }

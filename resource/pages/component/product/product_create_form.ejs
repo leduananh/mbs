@@ -1,0 +1,68 @@
+<form id='createProductForm' class='w-600p pd-20 mg-auto' action="/api/product" method="POST" enctype="multipart/form-data">
+
+    <div class='w-100 pd-10'>
+        <span>Add new product</span>
+    </div>
+
+    <div class='w-100 pd-20 bd-top-thin bd-color-gray-light'>
+        <div class='flex-row w-100 mg-tb-10 '>
+            <p class='min-w-150p text-align-right bold' >Product name</p>
+            <input class='mr-l-20p' type="text" name='name'>
+        </div>
+
+        <div class='flex-row w-100 mg-tb-10'>
+            <p class='min-w-150p text-align-right bold' >Unit Price</p>
+            <input class='mr-l-20p' type="text" name='price'>
+        </div>
+
+        <div class='flex-row w-100 mg-tb-10'>
+            <p class='min-w-150p text-align-right bold' >Units in Stock</p>
+            <input class='mr-l-20p' type="text" name='stock'>
+        </div>
+
+        <div class='flex-row w-100 mg-tb-10'>
+            <p class='min-w-150p text-align-right bold' >Description</p>
+            <input class='mr-l-20p' type="f" name='description' >
+        </div>
+
+        <div class='flex-row w-100 mg-tb-10'>
+            <p class='min-w-150p text-align-right bold' >Manufactor</p>
+            <input class='mr-l-20p' type="text" name='manufactor' >
+        </div>
+
+        <div class='flex-row w-100 mg-tb-10'>
+            <p class='min-w-150p text-align-right bold' >Category</p>
+            <input class='mr-l-20p' type="text" name='category'>
+        </div>
+
+        <div class='flex-row w-100 mg-tb-10'>
+            <p class='min-w-150p text-align-right bold' >Condition</p>
+            <div class='flex-row mr-l-20p'>
+                <div>
+                    <span>New</span>
+                    <input type="radio" name="new" >
+                </div>
+
+                <div class='mr-l-10p'>
+                    <span>Old</span>
+                    <input type="radio" name="old">
+                </div>
+                
+                <div class='mr-l-10p'> 
+                    <span>Refurbished</span>
+                    <input type="radio" name="refurbished">
+                </div>
+            </div>
+        </div>
+
+        <div class='flex-row w-100 mg-tb-10'>
+            <p class='text-align-right bold' >Product Image File</p>
+            <input class='mr-l-20p' type="file" accept="image/png, image/jpeg" name='path'>
+        </div>
+
+        <div class='flex-row w-100 justify-content-center mg-tb-20'>
+            <button class='pd-10 bd-none bg-dodgerblue-light bd-rd-thin cl' type='submit'>add product</button>
+        </div>
+        
+    </div>
+</form>
