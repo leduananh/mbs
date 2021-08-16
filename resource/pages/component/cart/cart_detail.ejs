@@ -1,0 +1,90 @@
+
+   <style>
+        table{
+            border: none;
+            border-collapse: collapse;
+        }
+
+        tbody  tr{
+            border-top: 2px solid rgb(0, 0, 0); 
+        }
+
+        tbody tr:last-child{
+            border-top: 2px solid rgb(0, 0, 0);
+        }
+    
+        td{
+            padding: 10px 30px 10px 30px;
+           
+        }
+
+        td{
+            min-width: 200px;
+        }
+
+        td > button{
+            padding: 6px;
+            border: none;
+            background-color: rgb(231, 50, 50);
+            border-radius: 5px;
+            color: white
+        }
+    </style>
+ <table>
+    <thead class="text-align-center">
+      <tr>
+        <td>Picture</td>
+        <td>Product</td>
+        <td>Quantity</td>
+        <td>Unit price</td>
+        <td>Price</td>
+        <td>Action</td>
+      </tr>
+    </thead>
+
+    <tbody class="text-align-center">
+
+    <% cartItem.forEach(item=>{ %>
+              <tr>
+
+                <td class="max-w-80p">
+                  <img class="w-100 h-100" src="<%= item.product.url %>" alt="<%= item.product.name %>" />
+                </td>
+
+                <td><%= item.product.name%></td>
+                <td><%= item.amount%></td>
+
+                <td><%= (+item.product.price).toLocaleString('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }) %>
+                </td>
+
+                <td><%= (item.product.price * item.amount).toLocaleString('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }) %></td>
+                <td>
+                 
+                <button>
+                    <i class="fas fa-times"></i>
+                    remove
+                </button>
+                </td>
+              </tr>      
+    <%})%>
+    <tr>
+        <td class="max-w-80p"></td>
+        <td></td>
+        <td></td>
+        <td>grand total</td>
+        <td><%= cartItem.map(item=>item.amount * item.product.price).reduce((count,cur)=>count+cur).toLocaleString('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        }) %> </td>
+        <td>
+    
+        </td>
+      </tr>     
+    </tbody>
+</table>

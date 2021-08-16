@@ -16,8 +16,6 @@ export const loadSessionCartAmount = async (req, res, next) => {
     req.amount = amount;
     next();
   } catch (error) {
-    res
-      .status(HTTP_STATUS.CLIENT_ERROR.UNPROCESSABLE_ENTITY.CODE)
-      .send(HTTP_STATUS.CLIENT_ERROR.UNPROCESSABLE_ENTITY.MSG(error.message));
+    req.amount = 0;
   }
 };

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- head -->
+
+  <%- include('./component/common/head.ejs'); %>
+  <!-- head -->
+  <body>
+    <!-- header -->
+    <%- include('./component/header/cart_detail_header.ejs'); %>
+    <!-- header -->
+
+    <div class='vw-60 mg-auto flex-row justify-content-center'>
+    <!-- table -->
+        <%- include('./component/cart/cart_detail.ejs',{cartItem: Array.from(cart.values())}); %>
+    <!-- table -->
+    </div>
+    
+  </body>
+</html>

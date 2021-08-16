@@ -8,13 +8,14 @@
     pd-20
   "
 >
-  <div>
+  <div class="cursor-pointer" onclick="(_=>window.location.href = window.location.origin)()">
     <h1>Products</h1>
     <p>All the asdasdadasd adasadasd</p>
   </div>
 
   <div class="flex-row">
     <button
+    onclick=" (_=>window.location.href = window.location.origin+'/cartDetails')()"
       class="
         flex-row
         mg-lr-10
@@ -49,6 +50,7 @@
     </button>
 
     <button
+    onclick=" (_=>window.location.href = window.location.origin+'/addProducts')()"
       class="
         flex-row
         mg-lr-10

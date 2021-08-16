@@ -1,0 +1,48 @@
+<div class='flex-row vw-60 mg-auto pd-20 '>
+    <div class='min-h-400p min-w-400p'>
+        <img class='h-100 w-100' src="<%=product.url%>" alt="<%=product.name%>">
+    </div>
+
+    <div class="flex-col justify-content-space-around">
+        <h2 class='bold'><%=product.name%></h2>
+        <p><%=product.description%></p>
+        <div>
+            <span class='bold'>Item Code:</span>
+            <span class='pd-10 bg-coral-light bd-rd-thin'><%=product.id%></span>
+        </div>
+        
+        <div>
+            <span class='bold'>Manufacturer:</span>
+            <span><%=product.manufactor%></span>
+        </div>
+
+        <div>
+            <span class='bold'>Catagory: </span>
+            <span><%=product.category%></span>
+        </div>
+        
+        <div>
+            <span class='bold'>Availble units in stock: </span>
+            <span><%=product.stock%></span>
+        </div>
+       
+        <p><%=  (+product.price).toLocaleString('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        })%> </p>
+        
+        <div class='w-100 mg-tb-10 '>
+            <a onclick="(_=>window.history.back())()">
+              <button class="bg-dodgerblue-light pd-10 bd-none bd-rd cursor-pointer cl">
+                <i class="icon-lib fas fa-arrow-alt-circle-left "></i>
+                back
+              </button>
+            </a>
+            <button class="bg-coral-light pd-10 bd-none bd-rd cursor-pointer cl" onclick="cart.addToCart('<%=product.id%>')">
+              <i class="icon-lib fas fa-shopping-cart "></i>
+              Oder Now
+              </button>
+          </div>
+    </div>
+</div>
+

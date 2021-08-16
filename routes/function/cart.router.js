@@ -2,7 +2,7 @@
 
 import express from 'express';
 
-import { getCart,addToCart } from '../../controller/cart.controller.js';
+import { getCart,addToCart} from '../../controller/cart.controller.js';
 
 export const CartRouter = express.Router();
 

@@ -1,7 +1,7 @@
 'use strict';
 
 import express from 'express';
-import { toIndexPage,getProductDetailPage,getindexPage,addProductPage } from '../../controller/app.controller.js';
+import { toIndexPage,getProductDetailPage,getindexPage,addProductPage, cartDetailPage} from '../../controller/app.controller.js';
 
 export const AppRouter = express.Router();
 
@@ -13,5 +13,6 @@ AppRouter.get('/detail', getProductDetailPage);
 
 AppRouter.get('/addProducts', addProductPage);
 
+AppRouter.get('/cartDetails', cartDetailPage);
 
 
